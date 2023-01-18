@@ -1,0 +1,254 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] konsulta-project                                                   [pom]
+[INFO] konsultacommon                                                     [jar]
+[INFO] konsultaconn                                                       [jar]
+[INFO] konsultasql                                                        [jar]
+[INFO] konsultatest                                                       [jar]
+[INFO] konsultadeskapp                                                    [jar]
+[INFO] 
+[INFO] ----------------< com.davcet.konsulta:konsulta-project >----------------
+[INFO] Building konsulta-project 0.0.1-SNAPSHOT                           [1/6]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ konsulta-project ---
+[INFO] 
+[INFO] -----------------< com.davcet.konsulta:konsultacommon >-----------------
+[INFO] Building konsultacommon 0.0.1-SNAPSHOT                             [2/6]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ konsultacommon ---
+[INFO] Deleting C:\Users\a82a\private-projects\konsulta\konsultacommon\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ konsultacommon ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ konsultacommon ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to C:\Users\a82a\private-projects\konsulta\konsultacommon\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ konsultacommon ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ konsultacommon ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ konsultacommon ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ konsultacommon ---
+[INFO] Building jar: C:\Users\a82a\private-projects\konsulta\konsultacommon\target\konsultacommon-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ------------------< com.davcet.konsulta:konsultaconn >------------------
+[INFO] Building konsultaconn 0.0.1-SNAPSHOT                               [3/6]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ konsultaconn ---
+[INFO] Deleting C:\Users\a82a\private-projects\konsulta\konsultaconn\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ konsultaconn ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ konsultaconn ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to C:\Users\a82a\private-projects\konsulta\konsultaconn\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ konsultaconn ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ konsultaconn ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ konsultaconn ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ konsultaconn ---
+[INFO] Building jar: C:\Users\a82a\private-projects\konsulta\konsultaconn\target\konsultaconn-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ------------------< com.davcet.konsulta:konsultasql >-------------------
+[INFO] Building konsultasql 0.0.1-SNAPSHOT                                [4/6]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ konsultasql ---
+[INFO] Deleting C:\Users\a82a\private-projects\konsulta\konsultasql\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ konsultasql ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ konsultasql ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to C:\Users\a82a\private-projects\konsulta\konsultasql\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ konsultasql ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ konsultasql ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ konsultasql ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ konsultasql ---
+[INFO] Building jar: C:\Users\a82a\private-projects\konsulta\konsultasql\target\konsultasql-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ------------------< com.davcet.konsulta:konsultatest >------------------
+[INFO] Building konsultatest 0.0.1-SNAPSHOT                               [5/6]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ konsultatest ---
+[INFO] Deleting C:\Users\a82a\private-projects\konsulta\konsultatest\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ konsultatest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ konsultatest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ konsultatest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ konsultatest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to C:\Users\a82a\private-projects\konsulta\konsultatest\target\test-classes
+[WARNING] /C:/Users/a82a/private-projects/konsulta/konsultatest/src/test/java/com/davcet/konsulta/konsultatest/TestKonsultaSqlManager.java: C:\Users\a82a\private-projects\konsulta\konsultatest\src\test\java\com\davcet\konsulta\konsultatest\TestKonsultaSqlManager.java uses unchecked or unsafe operations.
+[WARNING] /C:/Users/a82a/private-projects/konsulta/konsultatest/src/test/java/com/davcet/konsulta/konsultatest/TestKonsultaSqlManager.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M7:test (default-test) @ konsultatest ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.davcet.konsulta.konsultatest.TestKonsultaConnection
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s - in com.davcet.konsulta.konsultatest.TestKonsultaConnection
+[INFO] Running com.davcet.konsulta.konsultatest.TestKonsultaSqlManager
+[INFO] Running com.davcet.konsulta.konsultatest.TestKonsultaSqlManager$testH2
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.176 s - in com.davcet.konsulta.konsultatest.TestKonsultaSqlManager$testH2
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.178 s - in com.davcet.konsulta.konsultatest.TestKonsultaSqlManager
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ konsultatest ---
+[INFO] Building jar: C:\Users\a82a\private-projects\konsulta\konsultatest\target\konsultatest-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------------< com.davcet.konsulta:konsultadeskapp >-----------------
+[INFO] Building konsultadeskapp 0.0.1-SNAPSHOT                            [6/6]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ konsultadeskapp ---
+[INFO] Deleting C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ konsultadeskapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ konsultadeskapp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ konsultadeskapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ konsultadeskapp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ konsultadeskapp ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ konsultadeskapp ---
+[INFO] Building jar: C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target\konsultadeskapp-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for konsulta-project 0.0.1-SNAPSHOT:
+[INFO] 
+[INFO] konsulta-project ................................... SUCCESS [  0.133 s]
+[INFO] konsultacommon ..................................... SUCCESS [  1.280 s]
+[INFO] konsultaconn ....................................... SUCCESS [  0.196 s]
+[INFO] konsultasql ........................................ SUCCESS [  0.280 s]
+[INFO] konsultatest ....................................... SUCCESS [  2.577 s]
+[INFO] konsultadeskapp .................................... SUCCESS [  0.205 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.793 s
+[INFO] Finished at: 2023-01-13T17:01:34+01:00
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< com.davcet.konsulta:konsultadeskapp >-----------------
+[INFO] Building konsultadeskapp 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ konsultadeskapp ---
+[INFO] Deleting C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ konsultadeskapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ konsultadeskapp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ konsultadeskapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ konsultadeskapp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ konsultadeskapp ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ konsultadeskapp ---
+[INFO] Building jar: C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target\konsultadeskapp-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ konsultadeskapp ---
+[INFO] Installing C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target\konsultadeskapp-0.0.1-SNAPSHOT.jar to C:\Users\a82a\.m2\repository\com\davcet\konsulta\konsultadeskapp\0.0.1-SNAPSHOT\konsultadeskapp-0.0.1-SNAPSHOT.jar
+[INFO] Installing C:\Users\a82a\private-projects\konsulta\konsultadeskapp\pom.xml to C:\Users\a82a\.m2\repository\com\davcet\konsulta\konsultadeskapp\0.0.1-SNAPSHOT\konsultadeskapp-0.0.1-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------------< com.davcet.konsulta:konsultadeskapp >-----------------
+[INFO] Building konsultadeskapp 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> maven-assembly-plugin:2.2-beta-5:assembly (default-cli) > package @ konsultadeskapp >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ konsultadeskapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ konsultadeskapp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ konsultadeskapp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ konsultadeskapp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ konsultadeskapp ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ konsultadeskapp ---
+[INFO] 
+[INFO] <<< maven-assembly-plugin:2.2-beta-5:assembly (default-cli) < package @ konsultadeskapp <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.2-beta-5:assembly (default-cli) @ konsultadeskapp ---
+[INFO] Building jar: C:\Users\a82a\private-projects\konsulta\konsultadeskapp\target\konsultadeskapp-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.417 s
+[INFO] Finished at: 2023-01-13T17:01:38+01:00
+[INFO] ------------------------------------------------------------------------

@@ -4,10 +4,11 @@ import java.util.Arrays;
 import com.davcet.konsulta.konsultacommon.env.EnvVariables;
 
 public final class ExceptionManager {
+  private static final String kver = EnvVariables.GET.konsultaVersion();
   
   public static final void print(Exception e) {
     
-    System.out.println("KONSULTA VERSION:" + EnvVariables.KONSULTA_VERSION.value());
+    System.out.println("KONSULTA VERSION:" + kver);
     
     /** Print Stack Trace **/
     System.out.println(e.getMessage());
@@ -20,7 +21,7 @@ public final class ExceptionManager {
     
     StringBuilder sb = new StringBuilder();
     sb.append("KONSULTA VERSION:");
-    sb.append(EnvVariables.KONSULTA_VERSION.value());
+    sb.append(kver);
     sb.append("\n");
     
     /** Print Stack Trace **/

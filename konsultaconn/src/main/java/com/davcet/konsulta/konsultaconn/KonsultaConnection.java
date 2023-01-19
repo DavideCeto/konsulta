@@ -5,30 +5,36 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import com.davcet.konsulta.konsultacommon.env.EnvVariables;
-import com.davcet.konsulta.konsultacommon.exception.ExceptionManager;
 
 public final class KonsultaConnection {
 	private final String url;
-	private final String user;
+	private final String usr;
 	private final String pwd;
 	private final Connection conn;
 	
+	//private constructor
 	private KonsultaConnection(Builder b) throws SQLException {
-	  this.url = getDbProperty("KONSULTA_" + b.dbName + "_URL");
-	  this.user = getDbProperty("KONSULTA_" + b.dbName + "_USER");
-	  this.pwd = getDbProperty("KONSULTA_" + b.dbName + "_PWD");
+	  this.url = (b.dbName != null && !b.dbName.isEmpty()) ? 
+	      EnvVariables.GET.dbUrl(b.dbName) : "";
+	  
+	  this.usr = (b.dbName != null && !b.dbName.isEmpty()) ? 
+	      EnvVariables.GET.dbUser(b.dbName) : "";
+	  
+	  this.pwd = (b.dbName != null && !b.dbName.isEmpty()) ? 
+	      EnvVariables.GET.dbPwd(b.dbName) : "";
+	  
 	  this.conn = buildConnection(); 
 	}
 
-	/** KnonsultaConnection Builder **/
+	/** KonsultaConnection Builder **/
 	public static class Builder {
     private String dbName;
     
-    public KonsultaConnection build() throws SQLException {
+    public final KonsultaConnection build() throws SQLException {
       return new KonsultaConnection(this);
     }
 
-    public Builder DBMS(String dbName) {
+    public final Builder DBMS(String dbName) {
       this.dbName = dbName;
       return this;
     }
@@ -37,31 +43,29 @@ public final class KonsultaConnection {
       return new Builder();
     }
 	}
-	 
-	public Connection getConnection() {
+	
+	//=======================================================
+	//public methods
+	//=======================================================
+	public final Connection getConnection() {
 	  return this.conn;
 	}
 
   public final void closeConnection() throws SQLException {
-      if (!this.conn.isClosed()) this.conn.close();
+    if (!this.conn.isClosed()) this.conn.close();
   }
 
+  public final void commit() throws SQLException {
+    if (!this.conn.isClosed() && !this.conn.getAutoCommit()) this.conn.commit();
+  }
+
+  //=======================================================
+  //private methods
+  //=======================================================
 	private final Connection buildConnection() throws SQLException {
-      
-      Connection conn = DriverManager.getConnection(this.url, this.user, this.pwd);
-      conn.setAutoCommit(false);
-      return conn;
-      
-    
-  }
-
-  private String getDbProperty(String dbProp) {
-    try {
-      return EnvVariables.valueOf(dbProp).value();
-    }
-    catch (NullPointerException ex) {
-      return null;
-    }
+	  Connection conn = DriverManager.getConnection(this.url, this.usr, this.pwd);
+    conn.setAutoCommit(false);
+    return conn;
   }
 
 }

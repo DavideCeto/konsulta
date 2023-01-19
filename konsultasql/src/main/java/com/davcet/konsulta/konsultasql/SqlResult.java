@@ -7,35 +7,55 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import com.davcet.konsulta.konsultacommon.exception.ExceptionManager;
-
 public final class SqlResult {
-  private final LinkedHashMap<Integer,SqlColumn> mapResult; //key-value map: col id - col object (col values)
+  //key-value map: col id - col object (col values)
+  private final LinkedHashMap<Integer,SqlColumn> columnMap; 
+  
   private final ResultSet resultSet;
   private final long affectedRows;
   private final ArrayList<String> columnList;
   private final ArrayList<ArrayList<Object>> rowList;
+  private final int restart;
+  private final int fetchSize;
 
+  //private constructor
   private SqlResult(Builder b) {
-    this.mapResult = b.mapResult;
+    this.columnMap = b.columnMap;
     this.resultSet = b.rs;
     this.affectedRows = b.affectedRows;
     this.columnList = b.columnList;
     this.rowList = b.rowList;
+    this.restart = b.restart;
+    this.fetchSize = (b.noFetch) ? -1 : Builder.FETCH_SIZE;
   }
 
-  /** SqlResult Builder **/
-  final static class Builder {
-    private LinkedHashMap<Integer,SqlColumn> mapResult = new LinkedHashMap<>();
+  /** SqlResult Builder - package scope **/
+  static final class Builder {
+    private final LinkedHashMap<Integer,SqlColumn> columnMap = 
+        new LinkedHashMap<>();
+    
+    private final ArrayList<String> columnList = new ArrayList<>();
+    private final ArrayList<ArrayList<Object>> rowList = new ArrayList<>();
+    private static final int FETCH_SIZE = 10000;
     private ResultSet rs;
     private long affectedRows;
-    private ArrayList<String> columnList = new ArrayList<>();
-    private final ArrayList<ArrayList<Object>> rowList = new ArrayList<>();
+    private int restart = 0;
+    private boolean noFetch = false;
     
     final SqlResult build() throws SQLException {
       return mapSqlResult();
     }
 
+    final Builder noFetchSize() {
+      this.noFetch = true;
+      return this;
+    }
+    
+    final Builder restart(int n) {
+      this.restart = n;
+      return this;
+    }
+    
     final Builder affectedRows(long n) {
       this.affectedRows = n;
       return this;
@@ -50,46 +70,54 @@ public final class SqlResult {
       return new Builder();
     }
     
-    private SqlResult mapSqlResult() throws SQLException {
-      
+    private final SqlResult mapSqlResult() throws SQLException {
         if (this.rs != null) {
-          
+
           final ResultSetMetaData meta = this.rs.getMetaData();
-          final int columnCount = meta.getColumnCount();
-  
-          while (rs.next()) {
-            
-            ArrayList<Object> rowValues = new ArrayList<>();
-            
-            for (int i = 1; i <= columnCount; i++) {
-
-              if (rs.getRow() == 1) {
-                this.columnList.add(meta.getColumnName(i));
-              }
-
-              JDBCType type = JDBCType.valueOf(meta.getColumnType(i));
-              SqlColumn tempColumn = (rs.getRow() == 1) ? new SqlColumn(meta.getColumnName(i), type) : this.mapResult.get(i);
-              Object columnValue = castColumnValue(i, type);
-              tempColumn.addValue(columnValue);
-              rowValues.add(columnValue);
-
-              //This map will contains, for every column, all it's values
-              this.mapResult.put(i, tempColumn);
-            }
-
-            this.rowList.add(rowValues);            
+          if (this.restart > 0) this.rs.absolute(restart);
+          int rowCount = 0;
+          
+          while (rs.next() && (noFetch || rowCount < FETCH_SIZE)) {
+            mapResult(meta, rowCount);
+            rowCount++;
           }
         }
-        
-        return new SqlResult(this);
 
+        return new SqlResult(this);
+    }
+
+    private final void mapResult(ResultSetMetaData meta, int rowCount) 
+    throws SQLException {
+      
+      final ArrayList<Object> currentRowValues = new ArrayList<>();
+      final int colCount = meta.getColumnCount();
+
+      for (int i = 1; i <= colCount; i++) {
+        final SqlColumn currentCol = (rowCount == 0) ? 
+            initializeColumn(meta, i) : this.columnMap.get(i);
+        
+        final Object colValue = castColumnValue(i, currentCol.getSqlType());
+
+        currentCol.addValue(colValue);
+        currentRowValues.add(colValue);
+        this.columnMap.put(i, currentCol);
+      }
+
+      this.rowList.add(currentRowValues);      
+    }
+
+    private final SqlColumn initializeColumn(ResultSetMetaData meta, int i) 
+    throws SQLException {
+
+        this.columnList.add(meta.getColumnName(i));
+        JDBCType type = JDBCType.valueOf(meta.getColumnType(i));
+        return new SqlColumn(meta.getColumnName(i), type);
     }
 
     private final Object castColumnValue(int index, JDBCType type) {
       try {
         
         switch (type) {
-
           case ARRAY:  return this.rs.getArray(index);
           case BIGINT: return this.rs.getLong(index);
           case BINARY: return this.rs.getBinaryStream(index);
@@ -138,11 +166,16 @@ public final class SqlResult {
         return null;
       }
     }
-  } //End Builder
+  } //end Builder
 
-  /** Return key-value map: col number id (start from 1) - col object (col values)**/
-  public final LinkedHashMap<Integer,SqlColumn> getSqlResultMapped() {
-    return this.mapResult;
+  //=====================================================
+  //public methods
+  //=====================================================
+
+  /** Return key-value map: 
+   * col number id (start from 1) - col object (col values)**/
+  public final LinkedHashMap<Integer,SqlColumn> getResultMappedByColumns() {
+    return this.columnMap;
   }
 
   /** Return all the ResultSet (only for select statement) **/
@@ -156,23 +189,33 @@ public final class SqlResult {
   }
 
   /** Return columns names **/
-  public final ArrayList<String> getColumnList() {
+  public final ArrayList<String> getColNames() {
     return this.columnList;
   }
   
   /** Return column name by column id **/
-  public final String getColumnNameById(int id) {
+  public final String getColNameById(int id) {
     return this.columnList.get(id);
   }
 
   /** Return all rows values**/
-  public final ArrayList<ArrayList<Object>> getRowList() {
+  public final ArrayList<ArrayList<Object>> getValuesForEachRow() {
     return this.rowList;
   }
   
   /** Return row values by row id **/
   public final ArrayList<Object> getRowValuesById(int id) {
     return this.rowList.get(id);
+  }
+
+  /** Return last restart **/
+  public final int getRestartPoint() {
+    return this.restart;
+  }
+
+  /** Return fetch size or -1 if no fetch size **/
+  public final int getFetchSize() {
+    return this.fetchSize;
   }
 
 }

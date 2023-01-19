@@ -7,14 +7,17 @@ import java.sql.Statement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.davcet.konsulta.konsultacommon.exception.ExceptionManager;
 import com.davcet.konsulta.konsultaconn.KonsultaConnection;
 
 public final class SqlManager {  
   private final Connection conn;
-  private static final String PATTERN_MATCH_UPDATE = "DELETE|INSERT|UPDATE|CREATE|ALTER]";
-  private static final Pattern pattern = Pattern.compile(SqlManager.PATTERN_MATCH_UPDATE,Pattern.CASE_INSENSITIVE);
+  private static final String PATTERN_MATCH_UPDATE = 
+      "DELETE|INSERT|UPDATE|CREATE|ALTER]";
   
+  private static final Pattern pattern = 
+      Pattern.compile(SqlManager.PATTERN_MATCH_UPDATE,Pattern.CASE_INSENSITIVE);
+  
+  //private constructor
   private SqlManager(Builder b) {
     this.conn = b.conn;
   }
@@ -37,18 +40,30 @@ public final class SqlManager {
     }    
   }
   
-  /** Detect the type of sql statement (SELECT; INSERT; DELETE; UPDATE) and execute it **/
+  //=======================================================
+  //public methods
+  //=======================================================
+
+  /** Detect the type of sql statement (SELECT; INSERT; DELETE; UPDATE) 
+   * and execute it **/
   public final SqlResult execute(String sql) throws SQLException {
+    return execute(sql,0);
+  }
+
+  public final SqlResult execute(String sql, int restart) throws SQLException {
     switch (detectStatementType(sql)) {
       case EXECUTE_UPDATE:
         return executeUpdate(sql);
       case EXECUTE_SELECT:
-        return executeSelect(sql);
+        return executeSelect(sql, restart);
         
       default: return null;
     }
   }
 
+  //=======================================================
+  //private methods
+  //=======================================================
   private enum statementType {
     EXECUTE_UPDATE,
     EXECUTE_SELECT;
@@ -56,7 +71,9 @@ public final class SqlManager {
 
   private final statementType detectStatementType(String sql) {
     final Matcher matcher = pattern.matcher(sql);
-    final statementType found = (Boolean.TRUE.equals(matcher.find())) ? statementType.EXECUTE_UPDATE : statementType.EXECUTE_SELECT;
+    final statementType found = (Boolean.TRUE.equals(matcher.find())) ? 
+        statementType.EXECUTE_UPDATE : statementType.EXECUTE_SELECT;
+    
     return found;
   }
   
@@ -70,12 +87,20 @@ public final class SqlManager {
     }
   }
   
-  private final SqlResult executeSelect (String sql) throws SQLException {
+  private final SqlResult executeSelect (String sql, int restart) 
+  throws SQLException {
+    
     try(final Statement st = this.conn.createStatement()){
       
       final ResultSet rs = st.executeQuery(sql);
+      
       final long affected = selectCount(sql);
-      final SqlResult res = SqlResult.Builder.New().resultSet(rs).affectedRows(affected).build();
+      final SqlResult res = SqlResult.Builder.New()
+          .resultSet(rs)
+          .affectedRows(affected)
+          .restart(restart)
+          .build();
+      
       return res;
       
     }

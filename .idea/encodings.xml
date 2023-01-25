@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/konsultacommon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultacommon/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultaconn/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultaconn/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultadeskapp/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultadeskapp/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultasql/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultasql/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultatest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/konsultatest/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

@@ -3,13 +3,17 @@
 @ECHO ------------------------------------------------
 @ECHO start... 
 @ECHO OFF
-@ECHO mvn clean package... 
-cd ..
-cd ..
-call mvn clean package>konsulta-maven-install.log
+@ECHO mvn clean package...
 
-cd konsultadeskapp 
+cd ..
+cd ..
+
+call mvn clean package>logs/konsulta-maven-install.log
+
+cd konsultadeskapp
+
 @ECHO mvn clean install... 
+
 call mvn clean install -DskipTests assembly:assembly
 
 cd ..

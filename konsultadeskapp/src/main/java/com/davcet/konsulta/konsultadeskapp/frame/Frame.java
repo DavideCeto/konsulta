@@ -31,8 +31,8 @@ public class Frame extends JFrame {
     
     JLabel introLabel = new JLabel();
     StringBuilder title = new StringBuilder();
-
-    Path titlePath = Paths.get("title.html");
+    
+    Path titlePath = Paths.get("konsultadeskapp/title.html");
     List<String> htmlTitle = Files.readAllLines(titlePath);
     htmlTitle.forEach(el -> title.append(el));
 
